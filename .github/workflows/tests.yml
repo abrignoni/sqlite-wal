@@ -34,7 +34,8 @@ jobs:
         run: |
           set -o pipefail
           python -m unittest discover -s tests -p 'test_*.py' -v 2>&1 | tee test-output.txt
-          if grep -qi "skipped" test-output.txt; then
+          # Read unittest's own count; test names may contain the word itself.
+          if grep -qE '^(OK|FAILED) \(.*skipped=[0-9]+' test-output.txt; then
             echo "::error::a test was skipped; every test must run on every version"
             exit 1
           fi
