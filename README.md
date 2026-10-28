@@ -88,6 +88,14 @@ deleted and changed are known, so the result is checked against them exactly,
 and the newest state must equal what SQLite itself reads from an untouched copy
 of the full log. CI runs Python 3.10 to 3.14 and fails on any skipped test.
 
+## Used by
+
+ALEAPP, iLEAPP, RLEAPP, VLEAPP and DLEAPP carry this module as
+`scripts/sqlite_wal.py`, under a banner naming the commit it was copied at.
+Their `admin/scripts/check_vendored.py` fetches this repository's file at that
+commit and fails CI when the copy differs. Fix it here and re-vendor; an edit
+made in a copy is reverted by the next sync.
+
 Format reference: https://www.sqlite.org/fileformat2.html#the_write_ahead_log
 
 ## License
