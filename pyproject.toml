@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sqlite-wal"
+version = "0.1.0"
+description = "Read the committed states a SQLite write-ahead log still holds, read-only, as vendored by the LEAPP tools"
+# No dependencies. That is what lets the LEAPP cores vendor it as one file.
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "Alexis Brignoni" }]
+
+[project.urls]
+Homepage = "https://github.com/abrignoni/sqlite-wal"
+
+[project.scripts]
+sqlite-wal = "sqlite_wal.__main__:main"
+
+[tool.setuptools]
+packages = ["sqlite_wal"]
